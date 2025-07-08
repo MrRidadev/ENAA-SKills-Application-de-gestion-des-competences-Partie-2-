@@ -1,6 +1,6 @@
 # 📚 ENAA Skills – Plateforme de Suivi des Compétences
 
-**ENAA Skills** est une plateforme pédagogique conçue pour suivre l'acquisition des compétences des apprenants, en lien avec les briefs pédagogiques. Le projet est basé sur une architecture **microservices** avec communication inter-services via **Feign Client** ou **RestTemplate**.
+**ENAA Skills** est une plateforme pédagogique conçue pour suivre l'acquisition des compétences des apprenants, en lien avec les briefs pédagogiques. Le projet est basé sur une architecture **microservices** avec communication inter-services via **Feign Client**.
 
 ---
 
