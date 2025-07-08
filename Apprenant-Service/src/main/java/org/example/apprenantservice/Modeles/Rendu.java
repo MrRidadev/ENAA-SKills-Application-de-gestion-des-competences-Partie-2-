@@ -1,6 +1,7 @@
 package org.example.apprenantservice.Modeles;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -19,6 +20,7 @@ public class Rendu {
 
 
     @ManyToOne
+    @JsonBackReference
     private Apprenant apprrent;
 
     public Long getId() {

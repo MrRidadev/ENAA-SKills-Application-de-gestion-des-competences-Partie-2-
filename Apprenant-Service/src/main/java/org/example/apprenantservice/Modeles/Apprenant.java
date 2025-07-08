@@ -1,6 +1,7 @@
 package org.example.apprenantservice.Modeles;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.Entity;
 
 import jakarta.persistence.*;
@@ -16,6 +17,7 @@ public class Apprenant {
     private String email;
 
     @OneToMany(mappedBy = "apprrent", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Rendu> rendus;
 
     public Long getId() {
