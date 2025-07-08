@@ -23,4 +23,9 @@ public class BriefService {
     public List<Brief> getAllBriefs() {
         return briefRepository.findAll();
     }
+
+    public Brief getBriefById(Long id) {
+        return briefRepository.findById(id).orElseThrow();
+    }
+
 }
