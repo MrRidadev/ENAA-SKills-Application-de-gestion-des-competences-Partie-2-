@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class Apprernat {
     @Id
@@ -12,6 +14,9 @@ public class Apprernat {
     private Long id;
     private String nomComplet;
     private String email;
+
+    @OneToMany(mappedBy = "apprrent", cascade = CascadeType.ALL)
+    private List<Rendu> rendus;
 
     public Long getId() {
         return id;
@@ -35,5 +40,13 @@ public class Apprernat {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<Rendu> getRendus() {
+        return rendus;
+    }
+
+    public void setRendus(List<Rendu> rendus) {
+        this.rendus = rendus;
     }
 }
