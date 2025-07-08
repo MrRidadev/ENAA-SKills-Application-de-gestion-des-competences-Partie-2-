@@ -5,6 +5,8 @@ import org.example.apprenantservice.Repositorys.RenduRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class RenduService {
 
@@ -18,5 +20,10 @@ public class RenduService {
     // ajouter rendu
     public Rendu ajouterRendu(Rendu rendu) {
         return renduRepository.save(rendu);
+    }
+
+    // afficher les rendus
+    public List<Rendu> getRendus() {
+        return renduRepository.findAll();
     }
 }
