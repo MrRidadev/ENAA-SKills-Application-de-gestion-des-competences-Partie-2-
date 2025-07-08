@@ -28,4 +28,12 @@ public class BriefService {
         return briefRepository.findById(id).orElseThrow();
     }
 
+    public Brief updateBrief(Long id, Brief brief) {
+        Brief existing = briefRepository.findById(id).orElseThrow();
+        existing.setTitre(brief.getTitre());
+        existing.setDescription(brief.getDescription());
+        existing.setDateDebut(brief.getDateDebut());
+        existing.setDateFin(brief.getDateFin());
+        return briefRepository.save(existing);
+    }
 }

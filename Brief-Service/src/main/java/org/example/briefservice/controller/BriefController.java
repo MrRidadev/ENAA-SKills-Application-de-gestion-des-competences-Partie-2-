@@ -32,4 +32,11 @@ public class BriefController {
     public ResponseEntity<Brief> getById(@PathVariable Long id) {
         return ResponseEntity.ok(briefService.getBriefById(id));
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Brief> update(@PathVariable Long id, @RequestBody Brief brief) {
+        return ResponseEntity.ok(briefService.updateBrief(id, brief));
+    }
+
+
 }
