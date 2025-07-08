@@ -5,6 +5,8 @@ import org.example.briefservice.repository.BriefRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BriefService {
 
@@ -16,5 +18,9 @@ public class BriefService {
 
     public Brief saveBrief(Brief brief) {
         return briefRepository.save(brief);
+    }
+
+    public List<Brief> getAllBriefs() {
+        return briefRepository.findAll();
     }
 }
