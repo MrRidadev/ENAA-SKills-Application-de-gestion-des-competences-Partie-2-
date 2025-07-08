@@ -8,7 +8,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-public class Apprernat {
+public class Apprenant {
     @Id
     @GeneratedValue
     private Long id;

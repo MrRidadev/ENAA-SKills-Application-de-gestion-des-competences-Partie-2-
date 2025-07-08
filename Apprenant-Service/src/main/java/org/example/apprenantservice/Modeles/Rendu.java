@@ -19,7 +19,7 @@ public class Rendu {
 
 
     @ManyToOne
-    private Apprernat apprrent;
+    private Apprenant apprrent;
 
     public Long getId() {
         return id;
@@ -45,11 +45,11 @@ public class Rendu {
         this.dateDepot = dateDepot;
     }
 
-    public Apprernat getApprrent() {
+    public Apprenant getApprrent() {
         return apprrent;
     }
 
-    public void setApprrent(Apprernat apprrent) {
+    public void setApprrent(Apprenant apprrent) {
         this.apprrent = apprrent;
     }
 }
