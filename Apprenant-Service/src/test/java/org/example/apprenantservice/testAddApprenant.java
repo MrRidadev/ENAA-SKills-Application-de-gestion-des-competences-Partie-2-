@@ -34,7 +34,7 @@ public class testAddApprenant {
 
         // Then
         assertNotNull(saved.getId());
-        assertEquals("Ismail El Hiba", saved.getNomComplet());
-        assertEquals("ismail@example.com", saved.getEmail());
+        assertEquals(apprenant.getNomComplet(), saved.getNomComplet());
+        assertEquals(apprenant.getEmail(), saved.getEmail());
     }
 }
