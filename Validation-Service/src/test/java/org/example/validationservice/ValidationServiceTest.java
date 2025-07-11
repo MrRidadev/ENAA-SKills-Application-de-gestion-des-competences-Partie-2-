@@ -38,6 +38,25 @@ public class ValidationServiceTest {
         assertEquals(StatutValidationEnum.VALIDE, saved.getStatutValidation());
     }
 
+    @Test
+    public void testGetAllValidations() {
+
+        Validation v1 = new Validation();
+        v1.setStatutValidation(StatutValidationEnum.VALIDE);
+
+        Validation v2 = new Validation();
+        v2.setStatutValidation(StatutValidationEnum.NON_VALIDE);
+
+        validationService.addValidation(v1);
+        validationService.addValidation(v2);
+
+
+        List<Validation> result = validationService.getAllValidations();
+
+
+        assertEquals(2, result.size());
+    }
+
 
 }
 
