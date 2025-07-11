@@ -1,19 +1,25 @@
 package org.example.briefservice.service;
 
+import org.example.briefservice.DTO.CompetenceDTO;
+import org.example.briefservice.client.CompetenceClient;
 import org.example.briefservice.model.Brief;
 import org.example.briefservice.repository.BriefRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class BriefService {
 
     private final BriefRepository briefRepository;
+    private final CompetenceClient competenceClient;
 
-    public BriefService(BriefRepository briefRepository) {
+    @Autowired
+    public BriefService(BriefRepository briefRepository, CompetenceClient competenceClient) {
         this.briefRepository = briefRepository;
+        this.competenceClient = competenceClient;
     }
 
     public Brief saveBrief(Brief brief) {
@@ -36,4 +42,19 @@ public class BriefService {
         existing.setDateFin(brief.getDateFin());
         return briefRepository.save(existing);
     }
+
+    public List<CompetenceDTO> assiociation(Long briefId,Long competenceId) {
+        if(competenceClient.getCompetenceById(competenceId)!=null && getBriefById(briefId)!=null ) {
+            Brief brief= getBriefById(briefId);
+            List<Long> list=new ArrayList<>();
+            list.add(competenceId);
+            brief.setCompetenceIds(list);
+            briefRepository.save(brief);
+
+        }
+        return null;
+    }
+
+
+
 }
