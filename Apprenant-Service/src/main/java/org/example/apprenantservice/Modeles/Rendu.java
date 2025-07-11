@@ -23,6 +23,16 @@ public class Rendu {
     @JsonBackReference
     private Apprenant apprrent;
 
+    private Long briefId; // ID du brief associé
+
+    public Long getBriefId() {
+        return briefId;
+    }
+
+    public void setBriefId(Long briefId) {
+        this.briefId = briefId;
+    }
+
     public Long getId() {
         return id;
     }
