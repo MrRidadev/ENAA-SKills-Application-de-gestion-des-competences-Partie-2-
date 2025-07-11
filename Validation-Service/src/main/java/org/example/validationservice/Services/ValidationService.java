@@ -5,6 +5,8 @@ import org.example.validationservice.Repositorys.ValidationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ValidationService {
 
@@ -18,5 +20,10 @@ public class ValidationService {
     // ajouter validation
     public Validation addValidation(Validation validation) {
         return repository.save(validation);
+    }
+
+    // get all validation
+    public List<Validation> getAllValidations() {
+        return repository.findAll();
     }
 }
