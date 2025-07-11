@@ -67,5 +67,23 @@ private BriefService briefService;
 
     @Test
     void updateBrief() {
+
+        Brief brief = new Brief();
+        brief.setTitre("brief before update");
+        brief.setDescription("desc");
+
+        Brief saved = briefService.saveBrief(brief);
+
+        // Step 2: Prepare new values
+        Brief newData = new Brief();
+        newData.setTitre("brief after update");
+        newData.setDescription("new desc");
+
+        // Step 3: Call the update method
+        Brief updated = briefService.updateBrief(saved.getId(), newData);
+
+        // Step 4: Check if update happened
+        assertEquals("brief after update", updated.getTitre());
+        assertEquals("new desc", updated.getDescription());
     }
 }
