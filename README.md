@@ -27,3 +27,5 @@
 ### 🧩 2. Diagramme de Classes 
 ![img.png](img.png)
 ### ⏱️ 3. Diagramme de Séquence 
+#### En tant qu’apprenant, je peux déposer un rendu pour un brief.
+![img_2.png](img_2.png)
