@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.time.LocalDate;
+
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -48,6 +48,21 @@ private BriefService briefService;
 
     @Test
     void getBriefById() {
+
+        Brief brief = new Brief();
+        brief.setTitre("brief for getById");
+        brief.setDescription("desc");
+
+        Brief saved = briefService.saveBrief(brief);
+
+        // Step 2: Get it by its ID
+        Brief found = briefService.getBriefById(saved.getId());
+
+        // Step 3: Check it's not null and has the same title
+        assertNotNull(found);
+        assertEquals(saved.getTitre(), found.getTitre());
+
+
     }
 
     @Test
