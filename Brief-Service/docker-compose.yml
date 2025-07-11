@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8
+    container_name: mysql-container-enaa
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: Root@123
+      MYSQL_DATABASE: enaa_skills_db
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  brief-service:
+    build: .
+    container_name: brief-service
+    depends_on:
+      - mysql
+    ports:
+
+      - "8183:8183"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3307/enaa_skills_db
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: Root@123
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_DATABASE_PLATFORM: org.hibernate.dialect.MySQL8Dialect
+    networks:
+      - enaa-net
+
+volumes:
+  mysql_data:
+
+networks:
+  enaa-net:
+
