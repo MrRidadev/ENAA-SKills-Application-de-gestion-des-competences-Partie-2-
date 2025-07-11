@@ -5,6 +5,8 @@ import org.example.competenceservice.Services.CompetenceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/competence")
@@ -30,6 +32,11 @@ public class CompetenceController {
     @PostMapping("/verifier-validation/{id}")
     public Competence calculerStatut(@PathVariable Long id) {
         return competenceService.calculerStatutValidation(id);
+    }
+
+    @GetMapping("/getAll-competence")
+    public List<Competence> getAllCompetence() {
+        return competenceService.getAllCompetences();
     }
 
 }
