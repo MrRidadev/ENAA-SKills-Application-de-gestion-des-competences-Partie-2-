@@ -16,7 +16,7 @@ public class ApprenantController {
         this.apprenantService = apprenantService;
     }
 
-    @PostMapping("/ajouter-apprenant")
+    @RequestMapping(method = RequestMethod.POST)
     public Apprenant ajouterApprenant(@RequestBody Apprenant apprenant) {
         return apprenantService.addApprenat(apprenant);
     }
