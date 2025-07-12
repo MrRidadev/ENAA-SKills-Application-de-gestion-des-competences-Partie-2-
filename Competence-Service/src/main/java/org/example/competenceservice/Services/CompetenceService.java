@@ -51,4 +51,9 @@ public class CompetenceService {
 
         return competenceRepository.save(competence);
     }
+
+    // get competence
+    public List<Competence> getAllCompetences() {
+        return competenceRepository.findAll();
+    }
 }
