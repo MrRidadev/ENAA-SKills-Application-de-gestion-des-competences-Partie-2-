@@ -23,7 +23,7 @@ public class BriefController {
         this.briefService = briefService;
         this.briefRepository = briefRepository;
     }
-    @PostMapping
+    @PostMapping("ajouter-breif")
     public ResponseEntity<Brief> create(@RequestBody Brief brief) {
         return ResponseEntity.ok(briefService.saveBrief(brief));
     }
