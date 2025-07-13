@@ -1,13 +1,12 @@
 package org.example.briefservice.client;
-
 import org.example.briefservice.DTO.CompetenceDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-
 import java.util.List;
 
-@FeignClient(name = "Competence-Service", url = "http://Competence-Service:8087")
+
+@FeignClient(name = "Competence-Service",url = "http://localhost:8182")
 
     public interface CompetenceClient {
 
@@ -16,6 +15,7 @@ import java.util.List;
 
         @GetMapping("/competences/{id}")
         CompetenceDTO getCompetenceById(@PathVariable Long id);
+
     }
 
 

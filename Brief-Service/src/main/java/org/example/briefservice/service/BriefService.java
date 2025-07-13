@@ -43,17 +43,30 @@ public class BriefService {
         return briefRepository.save(existing);
     }
 
-    public List<CompetenceDTO> assiociation(Long briefId,Long competenceId) {
-        if(competenceClient.getCompetenceById(competenceId)!=null && getBriefById(briefId)!=null ) {
-            Brief brief= getBriefById(briefId);
-            List<Long> list=new ArrayList<>();
-            list.add(competenceId);
-            brief.setCompetenceIds(list);
-            briefRepository.save(brief);
-
+    public List<CompetenceDTO> assiociation(Long briefId, List<Long> competenceIds) {
+        // Get the brief
+        Brief brief = getBriefById(briefId);
+        if (brief == null) {
+            return null; // Return null or you can throw an exception if brief is not found
         }
-        return null;
+
+        // Loop through each competence ID, check if it exists, and add it to the brief
+        List<CompetenceDTO> competencesAssigned = new ArrayList<>();
+        for (Long competenceId : competenceIds) {
+            CompetenceDTO competence = competenceClient.getCompetenceById(competenceId);
+            if (competence != null) {
+                competencesAssigned.add(competence);
+                // Add competenceId to the brief
+                brief.getCompetenceIds().add(competenceId); // Assuming `competenceIds` is a List<Long> in Brief
+            }
+        }
+
+        // Save the updated brief
+        briefRepository.save(brief);
+
+        return competencesAssigned;  // Return the list of competences that were added
     }
+
 
 
 

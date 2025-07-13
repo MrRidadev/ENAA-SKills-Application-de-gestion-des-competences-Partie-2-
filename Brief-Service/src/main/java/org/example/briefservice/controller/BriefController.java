@@ -42,10 +42,11 @@ public class BriefController {
     public ResponseEntity<Brief> update(@PathVariable Long id, @RequestBody Brief brief) {
         return ResponseEntity.ok(briefService.updateBrief(id, brief));
     }
-    @PostMapping ("/association/{briefId}/{competenceId}")
-    public List<CompetenceDTO> assiociationCompetences(@PathVariable Long competenceId , @PathVariable Long briefId) {
-        return briefService.assiociation(briefId,competenceId);
+    @PostMapping("/association/{briefId}")
+    public List<CompetenceDTO> assiociationCompetences(@PathVariable Long briefId, @RequestBody List<Long> competenceIds) {
+        return briefService.assiociation(briefId, competenceIds);  // Passing the list of IDs to service
     }
+
 
     @GetMapping("/briefs/{id}")
     public ResponseEntity<Brief> getBriefById(@PathVariable Long id) {
