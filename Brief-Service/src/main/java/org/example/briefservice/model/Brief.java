@@ -18,8 +18,18 @@ public class Brief {
     private Date dateDebut;
     private Date dateFin;
 
+    public List<Long> getCompetenceIds() {
+        return competenceIds;
+    }
+
+    public void setCompetenceIds(List<Long> competenceIds) {
+        this.competenceIds = competenceIds;
+    }
+
     @ElementCollection
     private List<Long> competenceIds;
+
+
 
 
     public Brief() {

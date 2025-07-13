@@ -1,4 +1,5 @@
 package org.example.briefservice.controller;
+import org.example.briefservice.DTO.CompetenceDTO;
 import org.example.briefservice.model.Brief;
 import org.example.briefservice.repository.BriefRepository;
 import org.example.briefservice.service.BriefService;
@@ -41,7 +42,10 @@ public class BriefController {
     public ResponseEntity<Brief> update(@PathVariable Long id, @RequestBody Brief brief) {
         return ResponseEntity.ok(briefService.updateBrief(id, brief));
     }
-
+    @PostMapping ("/association/{briefId}/{competenceId}")
+    public List<CompetenceDTO> assiociationCompetences(@PathVariable Long competenceId , @PathVariable Long briefId) {
+        return briefService.assiociation(briefId,competenceId);
+    }
 
     @GetMapping("/briefs/{id}")
     public ResponseEntity<Brief> getBriefById(@PathVariable Long id) {
