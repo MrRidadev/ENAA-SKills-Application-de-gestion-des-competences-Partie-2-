@@ -1,5 +1,4 @@
 package org.example.validationservice.Services;
-
 import org.example.validationservice.Modeles.Validation;
 import org.example.validationservice.Repositorys.ValidationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +26,6 @@ public class ValidationService {
     public List<Validation> getAllValidations() {
         return repository.findAll();
     }
-
 
 
         @Autowired
