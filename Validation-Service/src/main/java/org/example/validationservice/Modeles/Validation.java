@@ -12,6 +12,7 @@ public class Validation {
     @Enumerated(EnumType.STRING)
     private StatutValidationEnum statutValidation = StatutValidationEnum.EN_ATTENTE;
 
+    private Long competenceId;
 
     public Long getId() {
         return id;
@@ -28,4 +29,13 @@ public class Validation {
     public void setStatutValidation(StatutValidationEnum statutValidation) {
         this.statutValidation = statutValidation;
     }
+
+    public Long getCompetenceId() {
+        return competenceId;
+    }
+
+    public void setCompetenceId(Long competenceId) {
+        this.competenceId = competenceId;
+    }
+
 }
