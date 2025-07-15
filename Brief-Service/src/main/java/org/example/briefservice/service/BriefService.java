@@ -47,9 +47,8 @@ public class BriefService {
         // Get the brief
         Brief brief = getBriefById(briefId);
         if (brief == null) {
-            return null; // Return null or you can throw an exception if brief is not found
+            return null;
         }
-
         // Loop through each competence ID, check if it exists, and add it to the brief
         List<CompetenceDTO> competencesAssigned = new ArrayList<>();
         for (Long competenceId : competenceIds) {
@@ -61,10 +60,10 @@ public class BriefService {
             }
         }
 
-        // Save the updated brief
+
         briefRepository.save(brief);
 
-        return competencesAssigned;  // Return the list of competences that were added
+        return competencesAssigned;
     }
 
 
