@@ -44,7 +44,6 @@ public class BriefService {
     }
 
     public List<CompetenceDTO> assiociation(Long briefId, List<Long> competenceIds) {
-        // Get the brief
         Brief brief = getBriefById(briefId);
         if (brief == null) {
             return null;
@@ -55,14 +54,11 @@ public class BriefService {
             CompetenceDTO competence = competenceClient.getCompetenceById(competenceId);
             if (competence != null) {
                 competencesAssigned.add(competence);
-                // Add competenceId to the brief
-                brief.getCompetenceIds().add(competenceId); // Assuming `competenceIds` is a List<Long> in Brief
+
+                brief.getCompetenceIds().add(competenceId);
             }
         }
-
-
         briefRepository.save(brief);
-
         return competencesAssigned;
     }
 
