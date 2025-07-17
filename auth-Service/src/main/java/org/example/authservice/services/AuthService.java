@@ -38,7 +38,7 @@ public class AuthService {
             throw new RuntimeException("Email déjà utilisé");
         }
 
-        // Créer l'utilisateur selon son rôle
+        // Crer l'utilisateur selon son role
         User user = createUserByRole(request);
 
         // Encoder le mot de passe
@@ -50,7 +50,7 @@ public class AuthService {
         // Sauvegarder l'utilisateur
         saveUserByRole(user);
 
-        // Générer le token JWT
+        // Genérer le token JWT
         String token = jwtService.generateToken(user.getEmail(), user.getRole().name());
 
         return new AuthResponse(token);
@@ -64,12 +64,12 @@ public class AuthService {
             throw new RuntimeException("Email ou mot de passe incorrect");
         }
 
-        // Vérifier le mot de passe
+        // Verifier le mot de passe
         if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
             throw new RuntimeException("Email ou mot de passe incorrect");
         }
 
-        // Générer le token JWT
+        // Génerer le token JWT
         String token = jwtService.generateToken(user.getEmail(), user.getRole().name());
 
         return new AuthResponse(token);

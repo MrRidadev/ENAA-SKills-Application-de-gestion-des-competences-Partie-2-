@@ -35,8 +35,8 @@ public class AuthController {
         }
     }
 
-    @GetMapping("/test")
-    public ResponseEntity<String> test() {
-        return ResponseEntity.ok("Service d'authentification fonctionnel!");
-    }
+//    @GetMapping("/test")
+//    public ResponseEntity<String> test() {
+//        return ResponseEntity.ok("Service d'authentification fonctionnel!");
+//    }
 }
