@@ -1,6 +1,6 @@
 package org.example.validationservice.DTO;
 
-public class competenceDTO {
+public class CompetenceDTO {
 
     private Long id;
     private String nom;
@@ -30,12 +30,12 @@ public class competenceDTO {
         this.statutValidation = statutValidation;
     }
 
-    public competenceDTO(Long id, String nom, String statutValidation) {
+    public CompetenceDTO(Long id, String nom, String statutValidation) {
         this.id = id;
         this.nom = nom;
         this.statutValidation = statutValidation;
     }
 
-    public competenceDTO() {
+    public CompetenceDTO() {
     }
 }
