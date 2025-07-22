@@ -1,4 +1,5 @@
-FROM ubuntu:latest
-LABEL authors="devja"
+FROM openjdk:17
+EXPOSE 8080
 
-ENTRYPOINT ["top", "-b"]
+ADD target/Apprenant-Service-0.0.1-SNAPSHOT.jar Apprenant-Service-0.0.1-SNAPSHOT.jar
+ENTRYPOINT ["java", "-jar" , "/Apprenant-Service-0.0.1-SNAPSHOT.jar"]
