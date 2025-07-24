@@ -1,6 +1,6 @@
 package org.example.briefservice.service;
 
-import org.example.briefservice.DTO.CompetenceDTO;
+import org.example.briefservice.dto.CompetenceDTO;
 import org.example.briefservice.client.CompetenceClient;
 import org.example.briefservice.model.Brief;
 import org.example.briefservice.repository.BriefRepository;

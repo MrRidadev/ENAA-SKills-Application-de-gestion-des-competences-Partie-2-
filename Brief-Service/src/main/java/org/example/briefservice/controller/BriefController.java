@@ -1,5 +1,5 @@
 package org.example.briefservice.controller;
-import org.example.briefservice.DTO.CompetenceDTO;
+import org.example.briefservice.dto.CompetenceDTO;
 import org.example.briefservice.model.Brief;
 import org.example.briefservice.repository.BriefRepository;
 import org.example.briefservice.service.BriefService;

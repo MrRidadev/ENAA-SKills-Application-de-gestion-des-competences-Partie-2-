@@ -1,4 +1,4 @@
-package org.example.briefservice.DTO;
+package org.example.briefservice.dto;
 
 public class CompetenceDTO {
 

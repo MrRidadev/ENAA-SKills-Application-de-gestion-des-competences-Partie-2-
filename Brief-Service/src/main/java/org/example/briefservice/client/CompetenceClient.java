@@ -1,5 +1,5 @@
 package org.example.briefservice.client;
-import org.example.briefservice.DTO.CompetenceDTO;
+import org.example.briefservice.dto.CompetenceDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
