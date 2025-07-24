@@ -1,6 +1,6 @@
 package org.example.briefservice.service;
-
 import org.example.briefservice.model.Brief;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,12 +14,19 @@ class BriefServiceTest {
 @Autowired
 private BriefService briefService;
 
+private Brief brief;
+
+    @BeforeEach
+
+    void setUp() {
+
+        brief = new Brief();
+        brief.setTitre("A default test title");
+        brief.setDescription("A default test description");
+    }
+
     @Test
     void saveBrief() {
-
-        Brief brief = new Brief();
-        brief.setTitre("titre breif");
-        brief.setDescription("test description");
 
         Brief saveBreif = briefService.saveBrief(brief);
 
@@ -29,60 +36,35 @@ private BriefService briefService;
 
     @Test
     void getAllBriefs() {
-
-        Brief brief = new Brief();
-        brief.setTitre("titre breif");
-        brief.setDescription("test description");
-
-
-        Brief saveBreif = briefService.saveBrief(brief);
-
+        briefService.saveBrief(brief);
         List<Brief> briefs = briefService.getAllBriefs();
 
         assertNotNull(briefs);
-        assertTrue(briefs.size()>0);
-
-
-
+        assertTrue(briefs.size() > 0);
     }
 
     @Test
     void getBriefById() {
 
-        Brief brief = new Brief();
-        brief.setTitre("brief for getById");
-        brief.setDescription("desc");
-
         Brief saved = briefService.saveBrief(brief);
 
-        // Step 2: Get it by its ID
         Brief found = briefService.getBriefById(saved.getId());
-
-        // Step 3: Check it's not null and has the same title
         assertNotNull(found);
         assertEquals(saved.getTitre(), found.getTitre());
-
 
     }
 
     @Test
     void updateBrief() {
 
-        Brief brief = new Brief();
-        brief.setTitre("brief before update");
-        brief.setDescription("desc");
-
         Brief saved = briefService.saveBrief(brief);
 
-        // Step 2: Prepare new values
         Brief newData = new Brief();
         newData.setTitre("brief after update");
         newData.setDescription("new desc");
 
-        // Step 3: Call the update method
         Brief updated = briefService.updateBrief(saved.getId(), newData);
 
-        // Step 4: Check if update happened
         assertEquals("brief after update", updated.getTitre());
         assertEquals("new desc", updated.getDescription());
     }
