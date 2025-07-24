@@ -7,12 +7,16 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: 0000
       MYSQL_DATABASE: ApprenantService
-      MYSQL_USER: root
-      MYSQL_PASSWORD: 0000
+
     ports:
       - "3307:3306"
     volumes:
       - mysql_data:/var/lib/mysql
+    # Add healthcheck to ensure MySQL is ready
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
 
   backend:
     build:
@@ -21,7 +25,8 @@ services:
     ports:
       - "8082:8080"
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/ApprenantService
       SPRING_DATASOURCE_USERNAME: root
@@ -29,7 +34,7 @@ services:
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
       SPRING_JPA_SHOW_SQL: "true"
       SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: org.hibernate.dialect.MySQL8Dialect
-      SERVER_PORT: 8085  # le port interne reste 8080
+      # Remove conflicting SERVER_PORT - use default 8080 inside container
 
 volumes:
   mysql_data:
