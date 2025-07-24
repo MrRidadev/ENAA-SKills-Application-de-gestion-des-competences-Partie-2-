@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -46,7 +47,7 @@ public class BriefService {
     public List<CompetenceDTO> assiociation(Long briefId, List<Long> competenceIds) {
         Brief brief = getBriefById(briefId);
         if (brief == null) {
-            return null;
+            return Collections.emptyList();
         }
         List<CompetenceDTO> competencesAssigned = new ArrayList<>();
         for (Long competenceId : competenceIds) {
@@ -59,5 +60,6 @@ public class BriefService {
         briefRepository.save(brief);
         return competencesAssigned;
     }
+
 
 }

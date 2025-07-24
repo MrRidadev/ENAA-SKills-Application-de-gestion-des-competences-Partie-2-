@@ -33,6 +33,7 @@ public class Brief {
 
 
     public Brief() {
+        
     }
 
     public Brief(Long id, String titre, String description, Date dateDebut, Date dateFin) {

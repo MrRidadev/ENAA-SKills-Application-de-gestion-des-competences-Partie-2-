@@ -8,6 +8,7 @@ class BriefServiceApplicationTests {
 
     @Test
     void contextLoads() {
+        System.out.println("Method is now implemented!");
     }
 
 }
