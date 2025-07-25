@@ -3,7 +3,7 @@ pipeline {
 
     tools {
         maven 'Maven 3.8.6'
-        jdk 'jdk 17'
+        jdk 'Java 17'
     }
 
     stages {
@@ -13,28 +13,34 @@ pipeline {
             }
         }
 
-        stage('Build') {
+        stage('Build Apprenant-Service') {
             steps {
-                bat 'mvn clean install -DskipTests'
+                dir('Apprenant-Service') {
+                    bat 'mvn clean install -DskipTests'
+                }
             }
         }
 
-        stage('Test') {
+        stage('Test Apprenant-Service') {
             steps {
-                bat 'mvn test'
+                dir('Apprenant-Service') {
+                    bat 'mvn test'
+                }
             }
         }
 
-        stage('Package') {
+        stage('Package Apprenant-Service') {
             steps {
-                bat 'mvn package'
+                dir('Apprenant-Service') {
+                    bat 'mvn package'
+                }
             }
         }
 
-        //stage('Archive') {
-         //   steps {
-         //       archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
-         //   }
-      //  }
+        stage('Archive JAR') {
+            steps {
+                archiveArtifacts artifacts: 'Apprenant-Service/target/*.jar', fingerprint: true
+            }
+        }
     }
 }
