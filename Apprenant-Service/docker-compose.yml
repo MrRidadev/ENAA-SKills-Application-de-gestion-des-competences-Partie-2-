@@ -23,18 +23,17 @@ services:
       context: .
     container_name: apprenant_backend
     ports:
-      - "8082:8080"
+      - "8082:8082"
     depends_on:
       mysql:
         condition: service_healthy
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/ApprenantService
+      SPRING_DATASOURCE_URL: jdbc:mysql://apprenant_mysql:3306/ApprenantService
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: 0000
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
       SPRING_JPA_SHOW_SQL: "true"
       SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: org.hibernate.dialect.MySQL8Dialect
-      # Remove conflicting SERVER_PORT - use default 8080 inside container
 
 volumes:
   mysql_data:

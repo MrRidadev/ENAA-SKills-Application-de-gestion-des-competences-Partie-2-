@@ -1,0 +1,40 @@
+pipeline {
+    agent any
+
+    tools {
+        maven 'Maven 3.8.6'
+        jdk 'Java 17'
+    }
+
+    stage('Checkout') {
+        steps {
+            git branch: 'main', url: 'https://github.com/MrRidadev/ENAA-SKills-Application-de-gestion-des-competences-Partie-2-.git'
+        }
+    }
+
+
+        stage('Build') {
+            steps {
+                sh 'mvn clean install -DskipTests'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+
+        stage('Package') {
+            steps {
+                sh 'mvn package'
+            }
+        }
+
+        stage('Archive') {
+            steps {
+                archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+            }
+        }
+    }
+}
