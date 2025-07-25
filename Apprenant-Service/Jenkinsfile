@@ -6,12 +6,12 @@ pipeline {
         jdk 'Java 17'
     }
 
-    stage('Checkout') {
-        steps {
-            git branch: 'main', url: 'https://github.com/MrRidadev/ENAA-SKills-Application-de-gestion-des-competences-Partie-2-.git'
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/MrRidadev/ENAA-SKills-Application-de-gestion-des-competences-Partie-2-.git'
+            }
         }
-    }
-
 
         stage('Build') {
             steps {
@@ -32,9 +32,9 @@ pipeline {
         }
 
         stage('Archive') {
-            steps {  archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+            steps {
+                archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
             }
         }
-
     }
-
+}
