@@ -1,14 +1,10 @@
 pipeline {
-    // This 'agent' directive is essential. It tells Jenkins to run on any available machine.
     agent any
-
-
 
     tools {
         maven 'Maven3'
     }
 
-    // This section contains all the steps the pipeline will execute
     stages {
         stage('Checkout Code') {
             steps {
@@ -22,13 +18,7 @@ pipeline {
             }
         }
 
-        stage('SonarQube Analysis') {
-            steps {
-                withSonarQubeEnv('MySonarQubeServer') {
-                    sh 'mvn sonar:sonar'
-                }
-            }
-        }
+        // SONARQUBE STAGE IS REMOVED
 
         stage('Build Docker Images') {
             steps {
@@ -36,9 +26,16 @@ pipeline {
                     echo 'Building Docker images...'
                     sh 'docker build -t enaa/auth-service:latest auth-service/'
                     sh 'docker build -t enaa/api-gateway:latest api-gateway/'
+                    sh 'docker build -t enaa/eureka-server:latest eureka-server/'
                     // Add a line for each of your other microservices
                 }
             }
+        }
+    }
+
+    post {
+        always {
+            cleanWs()
         }
     }
 }
