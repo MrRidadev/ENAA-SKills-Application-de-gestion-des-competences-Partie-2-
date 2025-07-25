@@ -1,12 +1,10 @@
 package org.example.briefservice.service;
-
 import org.example.briefservice.dto.CompetenceDTO;
 import org.example.briefservice.client.CompetenceClient;
 import org.example.briefservice.model.Brief;
 import org.example.briefservice.repository.BriefRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -60,6 +58,5 @@ public class BriefService {
         briefRepository.save(brief);
         return competencesAssigned;
     }
-
 
 }
