@@ -14,20 +14,17 @@ pipeline {
 
         stage('Build & Run Tests') {
             steps {
-                sh 'mvn clean install'
+                // This MUST be 'sh' because the command runs inside the Linux container
+                sh './mvnw clean install'
             }
         }
-
-        // SONARQUBE STAGE IS REMOVED
 
         stage('Build Docker Images') {
             steps {
                 script {
-                    echo 'Building Docker images...'
-                    sh 'docker build -t enaa/auth-service:latest auth-service/'
-                    sh 'docker build -t enaa/api-gateway:latest api-gateway/'
-                    sh 'docker build -t enaa/eureka-server:latest eureka-server/'
-                    // Add a line for each of your other microservices
+                    echo 'Building Docker image for Brief-Service...'
+                    // 'sh' is also correct here
+                    sh 'docker build -t enaa/brief-service:latest Brief-Service/'
                 }
             }
         }
