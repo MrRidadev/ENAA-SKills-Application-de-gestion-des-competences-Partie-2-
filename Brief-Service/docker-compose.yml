@@ -1,5 +1,4 @@
 services:
-  # The service name is changed to match your application.properties URL
   mysql-container-enaa:
     image: mysql:8
     container_name: mysql-container-enaa
@@ -13,20 +12,18 @@ services:
       - mysql_data:/var/lib/mysql
     networks:
       - enaa-net
-    # This block tells Docker how to check if the database is ready
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       timeout: 20s
       retries: 10
 
   brief-service:
-    build: .
+    build: ./Brief-Service # <-- FIXED: This now points to the correct folder
     container_name: brief-service
     ports:
       - "8183:8183"
     networks:
       - enaa-net
-    # This block now waits for the database to be healthy before starting
     depends_on:
       mysql-container-enaa:
         condition: service_healthy
